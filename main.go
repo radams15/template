@@ -73,7 +73,7 @@ func main() {
 		}
 
 		for _, template := range templateArry {
-			match, err := regexp.MatchString(fmt.Sprintf(`%s\.*`, requested), template)
+			match, err := regexp.MatchString(requested, template)
 			if err != nil {
 				log.Fatal(err)
 			}
