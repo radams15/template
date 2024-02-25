@@ -19,10 +19,6 @@ func templates(folder string) ([]string, error) {
 	out := make([]string, len(files))
 
 	for i, file := range files {
-		if file.IsDir() {
-			continue
-		}
-
 		out[i] = file.Name()
 	}
 
