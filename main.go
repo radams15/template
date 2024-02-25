@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	cp "github.com/otiai10/copy"
 	"log"
 	"os"
 	"path/filepath"
@@ -36,12 +37,7 @@ func createTemplate(name, templateDir, template string) error {
 		return fmt.Errorf("File '%s' already exists\n", dstPath)
 	}
 
-	input, err := os.ReadFile(srcPath)
-	if err != nil {
-		return err
-	}
-
-	err = os.WriteFile(dstPath, input, 0644)
+	err := cp.Copy(srcPath, dstPath)
 	if err != nil {
 		return err
 	}
