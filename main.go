@@ -33,7 +33,9 @@ func createTemplate(name, templateDir, template string) error {
 		return fmt.Errorf("File '%s' already exists\n", dstPath)
 	}
 
-	err := cp.Copy(srcPath, dstPath)
+    opt := cp.Options{OnSymlink: func(string) cp.SymlinkAction { return cp.Deep }}
+
+	err := cp.Copy(srcPath, dstPath, opt)
 	if err != nil {
 		return err
 	}
